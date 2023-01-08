@@ -1,0 +1,29 @@
+---
+- name: test playbook
+  hosts: all
+  remote_user: mog
+  become: true
+  tasks:
+    - name: install httpd apche server
+      yum:
+         name: httpd
+         state: latest
+    - name: started apache Running
+      service:
+          name: httpd
+          state: started
+    - name: create index page
+      copy:
+          content: "Installation of apache server 4 Dec echo 'Date' ...."
+          dest: /var/www/html/index.html
+    - name: update software
+      yum:
+         name: "*"
+         state: latest
+    - name: install yum utils
+      package:
+         name: yum-utils
+    - name: install GUI
+      yum:
+         name: elinks
+         state: latest

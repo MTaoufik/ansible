@@ -1,0 +1,4 @@
+[masters]
+x.x.x.x
+[workers]
+x.x.x.x
